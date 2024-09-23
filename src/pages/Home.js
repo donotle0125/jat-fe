@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Homepage.css';
+import '../styles/Home.css';
 
 export const Home = () => {
     return (
@@ -15,18 +15,64 @@ export const Home = () => {
             </header>
 
             <section className='features'>
-                <h2>Features</h2>
-                <ul>
-                    <li>Register and manage your job applications easily.</li>
-                    <li>
-                        Keep track of your application status and deadlines.
-                    </li>
-                    <li>
-                        View and update details as you progress through the
-                        hiring process.
-                    </li>
-                </ul>
+                <div class='container'>
+                    <div class='box'>
+                        <span></span>
+                        <div class='content'>
+                            <h2>Manage Your Applications Effortlessly</h2>
+                            <p>
+                                Keep all your job applications organized in one
+                                place. Easily add, view, and update applications
+                                as you progress through the hiring process
+                            </p>
+                        </div>
+                    </div>
+                    <div class='box'>
+                        <span></span>
+                        <div class='content'>
+                            <h2>Stay on Top of Your Job Hunt</h2>
+                            <p>
+                                Never miss an important deadline. Track the
+                                status of each application, set reminders, and
+                                stay ahead of your job search
+                            </p>
+                        </div>
+                    </div>
+                    <div class='box'>
+                        <span></span>
+                        <div class='content'>
+                            <h2>Insights and Analytics</h2>
+                            <p>
+                                Get valuable insights with analytics that help
+                                you understand your job search patterns and
+                                identify opportunities for improvement
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </section>
+            <div class='background'>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     );
 };
