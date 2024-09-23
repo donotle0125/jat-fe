@@ -1,11 +1,17 @@
 import React from 'react';
+import '../styles/Homepage.css';
 
-const Home = () => {
+export const Home = () => {
     return (
         <div className='home-container'>
             <header className='home-header'>
-                <h1>Welcome to the AppHub</h1>
-                <p>Track all your job applications in one place!</p>
+                <div class='home-header-content'>
+                    <h1>Welcome to the AppHub</h1>
+                    <div class='description'>
+                        <p>Track all your job applications in one place!</p>
+                    </div>
+                </div>
+                <div class='picture'></div>
             </header>
 
             <section className='features'>
@@ -24,5 +30,3 @@ const Home = () => {
         </div>
     );
 };
-
-export default Home;
