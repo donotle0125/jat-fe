@@ -49,7 +49,7 @@ export const NavigationBar = ({ isAuthenticated, onLogout }) => {
                     </button>
                 ) : (
                     <>
-                        <Link to='/log-in' className='nav-button login-button'>
+                        <Link to='/login' className='nav-button login-button'>
                             Log In
                         </Link>
                         <Link

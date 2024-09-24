@@ -5,20 +5,20 @@ export const Home = () => {
     return (
         <div className='home-container'>
             <header className='home-header'>
-                <div class='home-header-content'>
+                <div className='home-header-content'>
                     <h1>Welcome to the AppHub</h1>
-                    <div class='description'>
+                    <div className='description'>
                         <p>Track all your job applications in one place!</p>
                     </div>
                 </div>
-                <div class='picture'></div>
+                <div className='picture'></div>
             </header>
 
             <section className='features'>
-                <div class='container'>
-                    <div class='box'>
+                <div className='container'>
+                    <div className='box'>
                         <span></span>
-                        <div class='content'>
+                        <div className='content'>
                             <h2>Manage Your Applications Effortlessly</h2>
                             <p>
                                 Keep all your job applications organized in one
@@ -27,9 +27,9 @@ export const Home = () => {
                             </p>
                         </div>
                     </div>
-                    <div class='box'>
+                    <div className='box'>
                         <span></span>
-                        <div class='content'>
+                        <div className='content'>
                             <h2>Stay on Top of Your Job Hunt</h2>
                             <p>
                                 Never miss an important deadline. Track the
@@ -38,9 +38,9 @@ export const Home = () => {
                             </p>
                         </div>
                     </div>
-                    <div class='box'>
+                    <div className='box'>
                         <span></span>
-                        <div class='content'>
+                        <div className='content'>
                             <h2>Insights and Analytics</h2>
                             <p>
                                 Get valuable insights with analytics that help
@@ -51,7 +51,7 @@ export const Home = () => {
                     </div>
                 </div>
             </section>
-            <div class='background'>
+            <div className='background'>
                 <span></span>
                 <span></span>
                 <span></span>

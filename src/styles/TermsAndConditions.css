@@ -1,0 +1,20 @@
+.terms-and-conditions {
+    padding: 20px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.terms-and-conditions h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.terms-and-conditions h3 {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.terms-and-conditions p {
+    margin-bottom: 15px;
+}

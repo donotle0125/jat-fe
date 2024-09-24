@@ -1,0 +1,31 @@
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 15px 0 15px 0;
+}
+
+.checkbox-container input[type='checkbox'] {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    padding: 0;
+    appearance: auto;
+    cursor: pointer;
+}
+
+.checkbox-container label {
+    margin: 0;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.checkbox-container a {
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.checkbox-container a:hover {
+    color: blue;
+}
