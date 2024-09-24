@@ -1,4 +1,3 @@
-// src/components/TermsAndConditions.js
 import React from 'react';
 import '../styles/TermsAndConditions.css';
 

@@ -13,5 +13,3 @@ export const registerUser = (userData) => {
 export const loginUser = (credentials) => {
     return axios.post(`${API_URL}/login`, credentials);
 };
-
-// Add more API requests as needed

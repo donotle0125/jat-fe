@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
-import axios from 'axios';
+import { loginUser } from '../services/api';
 import '../styles/Login.css';
 
 const Login = () => {
@@ -26,10 +25,7 @@ const Login = () => {
         }
 
         try {
-            const response = await axios.post(
-                process.env.REACT_APP_API_URL_PROD,
-                formData
-            );
+            const response = loginUser(formData);
             setMessage(response.data.message);
         } catch (error) {
             setMessage(

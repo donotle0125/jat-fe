@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Register.css';
 import AcceptTerms from '../components/AcceptTerms';
+import { registerUser } from '../services/api';
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -17,22 +17,17 @@ const Register = () => {
 
     const [message, setMessage] = useState('');
     const [isChecked, setIsChecked] = useState(false);
+    const navigate = useNavigate();
 
-    // Handle form input changes
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log('submitting');
         try {
-            console.log(formData);
-            const response = await axios.post(
-                process.env.REACT_APP_API_URL_PROD,
-                formData
-            );
+            const response = registerUser(formData);
             setMessage(response.data.message);
             setFormData({
                 name: '',
@@ -43,6 +38,11 @@ const Register = () => {
                 job_title: '',
                 password: '',
             });
+
+            // Redirect to the dashboard on success
+            if (response.status === 200) {
+                navigate('/dashboard');
+            }
         } catch (error) {
             setMessage(
                 error.response?.data?.error ||
@@ -59,6 +59,9 @@ const Register = () => {
         <div className='signup-form-container'>
             <form onSubmit={handleSubmit}>
                 <h2>Sign Up</h2>
+                {message && (
+                    <p style={{ fontSize: '17px', color: 'red' }}>{message}</p>
+                )}
                 <div className='input-box'>
                     <label htmlFor='fullname'>Full Name:</label>
                     <input
@@ -146,7 +149,7 @@ const Register = () => {
                     <input
                         type='submit'
                         value='Register Now'
-                        disabled={!isChecked} // Should disable if terms are not accepted
+                        disabled={!isChecked}
                     />
                 </div>
                 <div style={{ marginTop: '1em' }}>
@@ -156,7 +159,6 @@ const Register = () => {
                     </p>
                 </div>
             </form>
-            {message && <p>{message}</p>}
         </div>
     );
 };

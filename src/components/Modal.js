@@ -1,9 +1,8 @@
-// src/components/Modal.js
 import React from 'react';
-import '../styles/Modal.css'; // Optional: Create a separate CSS file for styling
+import '../styles/Modal.css';
 
 const Modal = ({ show, onClose, children }) => {
-    if (!show) return null; // Don't render the modal if show is false
+    if (!show) return null;
 
     return (
         <div className='modal-overlay' onClick={onClose}>
