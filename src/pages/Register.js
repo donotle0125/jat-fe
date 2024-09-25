@@ -31,7 +31,7 @@ const Register = () => {
             if (response.status === 200) {
                 setMessage(response.data.message);
                 console.log(message);
-                navigate('/dashboard');
+                navigate('/user/dashboard');
             }
         } catch (error) {
             console.error('Error:', error);

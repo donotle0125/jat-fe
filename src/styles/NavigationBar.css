@@ -65,6 +65,30 @@
     animation-play-state: paused;
 }
 
+.nav-logo-auth h2 a {
+    margin: 0;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: black;
+    padding: 8px 6px 8px 6px;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #000;
+    border: solid 5px transparent;
+    border-radius: 2em;
+
+    background:
+        conic-gradient(from var(--border-angle), white, white 5%, white 60%, white 95%) padding-box,
+        conic-gradient(from var(--border-angle), transparent 25%, #00aa11, #027200 99%, transparent) border-box;
+
+    background-position: center center;
+    animation: bg-spin 3s linear infinite;
+    transition: animation-play-state 0.3s ease;
+}
+
+.nav-logo-auth h2 a:hover {
+    animation-play-state: paused;
+}
 
 .nav-links {
     display: flex;
@@ -149,10 +173,12 @@
 }
 
 .logout-button {
-    background-color: transparent;
-    color: black;
+    background-color: #900D24;
+    color: white;
+    height: 3em;
+    font-weight: 900;
 }
 
 .logout-button:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgb(255, 0, 0);
 }

@@ -32,7 +32,7 @@ const Login = ({ setUserData }) => {
                 setUserData(response.data.user);
                 setMessage(response.data.message);
                 console.log(message);
-                navigate('/dashboard');
+                navigate('/user/dashboard');
             }
         } catch (error) {
             setMessage(

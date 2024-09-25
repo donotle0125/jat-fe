@@ -6,7 +6,7 @@ export const NavigationBar = ({ isAuthenticated, onLogout }) => {
     return (
         <nav className='navigation-bar'>
             <div className='nav-left'>
-                <div className='nav-logo'>
+                <div className={isAuthenticated ? 'nav-logo-auth' : 'nav-logo'}>
                     <h2>
                         <Link to='/'>AppHub</Link>
                     </h2>
@@ -15,7 +15,7 @@ export const NavigationBar = ({ isAuthenticated, onLogout }) => {
                     {isAuthenticated ? (
                         <>
                             <li>
-                                <Link to='/dashboard'>Dashboard</Link>
+                                <Link to='/user/dashboard'>Dashboard</Link>
                             </li>
                             <li>
                                 <Link to='/resumes'>Resumes</Link>
