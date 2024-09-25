@@ -25,25 +25,16 @@ const Register = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('submitting');
         try {
-            const response = registerUser(formData);
-            setMessage(response.data.message);
-            setFormData({
-                name: '',
-                birthday: '',
-                username: '',
-                email: '',
-                phone: '',
-                job_title: '',
-                password: '',
-            });
+            const response = await registerUser(formData);
 
-            // Redirect to the dashboard on success
             if (response.status === 200) {
+                setMessage(response.data.message);
+                console.log(message);
                 navigate('/dashboard');
             }
         } catch (error) {
+            console.error('Error:', error);
             setMessage(
                 error.response?.data?.error ||
                     'An error occurred. Please try again.'

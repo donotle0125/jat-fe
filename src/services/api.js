@@ -7,9 +7,17 @@ const API_URL =
         : process.env.REACT_APP_API_URL_PROD;
 
 export const registerUser = (userData) => {
-    return axios.post(`${API_URL}/register`, userData);
+    return axios.post(`${API_URL}/register`, userData, {
+        headers: { 'Content-Type': 'application/json' },
+    });
 };
 
 export const loginUser = (credentials) => {
-    return axios.post(`${API_URL}/login`, credentials);
+    return axios.post(
+        `${process.env.REACT_APP_API_URL_PROD}/login`,
+        credentials,
+        {
+            headers: { 'Content-Type': 'application/json' },
+        }
+    );
 };

@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { loginUser } from '../services/api';
 import '../styles/Login.css';
 
-const Login = () => {
+const Login = ({ setUserData }) => {
     const [formData, setFormData] = useState({
         username: '',
         password: '',
     });
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
+
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -25,8 +27,13 @@ const Login = () => {
         }
 
         try {
-            const response = loginUser(formData);
-            setMessage(response.data.message);
+            const response = await loginUser(formData);
+            if (response.status === 200) {
+                setUserData(response.data.user);
+                setMessage(response.data.message);
+                console.log(message);
+                navigate('/dashboard');
+            }
         } catch (error) {
             setMessage(
                 error.response?.data?.error ||
@@ -34,7 +41,6 @@ const Login = () => {
             );
         }
         setError('');
-        alert('Logged in successfully!');
     };
 
     return (
