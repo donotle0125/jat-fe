@@ -13,11 +13,19 @@ export const registerUser = (userData) => {
 };
 
 export const loginUser = (credentials) => {
-    return axios.post(
-        `${process.env.REACT_APP_API_URL_PROD}/login`,
-        credentials,
-        {
-            headers: { 'Content-Type': 'application/json' },
-        }
-    );
+    return axios.post(`${API_URL}/login`, credentials, {
+        headers: { 'Content-Type': 'application/json' },
+    });
+};
+
+export const getJobApplications = (userId) => {
+    return axios.get(`${API_URL}/jobs`, {
+        params: { user_id: userId },
+    });
+};
+
+export const updateJobApplicationStatus = (jobAppData, jobId) => {
+    return axios.put(`${API_URL}/jobs/${jobId}`, jobAppData, {
+        headers: { 'Content-Type': 'application/json' },
+    });
 };

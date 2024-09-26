@@ -18,16 +18,23 @@ export const NavigationBar = ({ isAuthenticated, onLogout }) => {
                                 <Link to='/user/dashboard'>Dashboard</Link>
                             </li>
                             <li>
-                                <Link to='/resumes'>Resumes</Link>
+                                <Link to='/user/resumes'>Resumes</Link>
                             </li>
                             <li>
-                                <Link to='/resume-tailor'>Resume Tailor</Link>
+                                <Link to='/user/resume-tailor'>
+                                    Resume Tailor
+                                </Link>
                             </li>
                             <li>
-                                <Link to='/cv-generator'>CV Generator</Link>
+                                <Link to='/user/cv-generator'>
+                                    CV Generator
+                                </Link>
                             </li>
                             <li>
-                                <Link to='/job-boards'>Job Boards</Link>
+                                <Link to='/user/job-boards'>Job Boards</Link>
+                            </li>
+                            <li>
+                                <Link to='/user/profile'>Your Profile</Link>
                             </li>
                         </>
                     ) : (

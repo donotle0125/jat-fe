@@ -74,10 +74,10 @@ const Login = ({ setUserData }) => {
                 </div>
                 <button type='submit'>Login</button>
                 <div style={{ marginTop: '1em' }}>
-                    <t>
+                    <p>
                         Don't have an account? Register{' '}
                         <Link to='/register'>here</Link>
-                    </t>
+                    </p>
                 </div>
             </form>
         </div>
