@@ -3,8 +3,11 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import {
     getJobApplications,
     updateJobApplicationStatus,
+    deleteJobApplication,
 } from '../services/api';
 import '../styles/Dashboard.css';
+import Modal from '../components/Modal';
+import AddNewJob from '../components/AddNewJob';
 
 const initialColumns = {
     Pending: {
@@ -34,6 +37,36 @@ const Dashboard = ({ userData }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [jobApps, setJobApps] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+
+    const handleOpenModal = () => setShowModal(true);
+    const handleCloseModal = () => setShowModal(false);
+
+    const handleJobAdded = (newJob) => {
+        const newColumns = { ...columns };
+        if (newColumns[newJob.status]) {
+            newColumns[newJob.status].items.push(newJob);
+        }
+        setColumns(newColumns);
+    };
+
+    const handleDelete = async (jobId) => {
+        try {
+            await deleteJobApplication(jobId);
+
+            const newColumns = { ...columns };
+
+            Object.keys(newColumns).forEach((columnId) => {
+                newColumns[columnId].items = newColumns[columnId].items.filter(
+                    (job) => job.id !== jobId
+                );
+            });
+
+            setColumns(newColumns);
+        } catch (error) {
+            console.error('Error deleting job:', error);
+        }
+    };
 
     useEffect(() => {
         const fetchJobApplications = async () => {
@@ -45,14 +78,10 @@ const Dashboard = ({ userData }) => {
                     if (response.status === 200) {
                         const jobs = response.data;
 
-                        // Verify the response data structure
-                        if (Array.isArray(jobs)) {
-                            setJobApps(jobs);
+                        const newColumns = { ...initialColumns };
 
-                            // Sort jobs into their respective columns based on status
-                            const newColumns = { ...initialColumns };
+                        if (Array.isArray(jobs) && jobs.length > 0) {
                             jobs.forEach((job) => {
-                                // Ensure status exists before pushing to the column
                                 if (newColumns[job.status]) {
                                     newColumns[job.status].items.push(job);
                                 } else {
@@ -62,14 +91,11 @@ const Dashboard = ({ userData }) => {
                                     );
                                 }
                             });
-
-                            setColumns(newColumns);
-                            setError(null);
-                        } else {
-                            throw new Error(
-                                'Unexpected data format from the server.'
-                            );
                         }
+
+                        setColumns(newColumns);
+                        setJobApps(jobs);
+                        setError(null);
                     } else {
                         throw new Error(
                             `Unexpected response status: ${response.status}`
@@ -79,7 +105,6 @@ const Dashboard = ({ userData }) => {
                     setError('User data not available.');
                 }
             } catch (err) {
-                // Log the actual error object to understand what is being caught
                 console.error('Error fetching job applications:', err);
                 setError(
                     err.message ||
@@ -105,7 +130,6 @@ const Dashboard = ({ userData }) => {
             const destItems = [...destColumn.items];
             const [movedItem] = sourceItems.splice(source.index, 1);
 
-            // Update the status of the moved item to match the destination column
             movedItem.status = destination.droppableId;
 
             destItems.splice(destination.index, 0, movedItem);
@@ -122,7 +146,6 @@ const Dashboard = ({ userData }) => {
                 },
             });
 
-            // Prepare the updated job application data
             const updatedJobApplicationData = {
                 user_id: userData.id,
                 company_name: movedItem.company_name,
@@ -154,7 +177,23 @@ const Dashboard = ({ userData }) => {
                 <h1>
                     Welcome to <span>your Dashboard</span>
                 </h1>
-                <button className='btn from-left'>Add new job +</button>
+                <button
+                    className='add-new-job-btn'
+                    onClick={handleOpenModal}
+                    role='button'
+                >
+                    Add new job +
+                </button>
+
+                {showModal && (
+                    <Modal show={showModal} onClose={handleCloseModal}>
+                        <AddNewJob
+                            userData={userData}
+                            handleCloseModal={handleCloseModal}
+                            onJobAdded={handleJobAdded}
+                        />
+                    </Modal>
+                )}
                 {loading ? (
                     <p>Loading job applications...</p>
                 ) : error ? (
@@ -175,7 +214,10 @@ const Dashboard = ({ userData }) => {
                                                     {...provided.droppableProps}
                                                     ref={provided.innerRef}
                                                 >
-                                                    <h2>{column.name}</h2>
+                                                    <h2>
+                                                        {column.name} (
+                                                        {column.items.length})
+                                                    </h2>
                                                     {column.items.map(
                                                         (item, index) => (
                                                             <Draggable
@@ -213,7 +255,14 @@ const Dashboard = ({ userData }) => {
                                                                         <button className='edit-job-app'>
                                                                             Edit
                                                                         </button>
-                                                                        <button className='delete-job-app'>
+                                                                        <button
+                                                                            className='delete-job-app'
+                                                                            onClick={() =>
+                                                                                handleDelete(
+                                                                                    item.id
+                                                                                )
+                                                                            }
+                                                                        >
                                                                             Delete
                                                                         </button>
                                                                     </div>

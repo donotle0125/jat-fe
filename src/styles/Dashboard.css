@@ -1,7 +1,7 @@
 .dashboard-container {
     background-color: #570000;
     width: 100%;
-    height: 110vh;
+    height: 140vh;
 }
 
 .dashboard-wrapper {
@@ -25,50 +25,17 @@
     text-transform: uppercase;
     font-size: 1.5rem;
     color: white;
+    margin: 1em;
+    align-self: flex-start;
+}
+
+.add-new-job-btn {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    color: white;
     padding: 2em;
     align-self: flex-start;
-}
-
-/* .dashboard-wrapper button {
-    text-transform: uppercase;
-    font-size: 1rem;
-    margin-left: 2.2em;
-    align-self: flex-start;
-    padding: 4px;
-} */
-
-.dashboard-wrapper .btn {
-    align-self: flex-start;
-    position: relative;
-    font-size: 1rem;
-    color: var(--inv);
-    text-transform: uppercase;
-    transition: all 500ms cubic-bezier(0.77, 0, 0.175, 1);
-    cursor: pointer;
-    user-select: none;
-    padding: .5em;
-    margin-left: 2em;
-}
-
-.dashboard-wrapper .btn:before, .btn:after {
-    content: '';
-    position: absolute;
-    transition: inherit;
-    z-index: -1;
-}
-
-.dashboard-wrapper .btn:hover {
-    color: var(--def);
-    transition-delay: .5s;
-}
-
-.dashboard-wrapper .btn:hover:before {
-    transition-delay: 0s;
-}
-
-.dashboard-wrapper .btn:hover:after {
-    background: var(--inv);
-    transition-delay: .35s;
+    margin-top: 1em;
 }
 
 .dashboard-wrapper .from-left:before,
@@ -97,7 +64,7 @@
 
 .dashboard-wrapper h1 span {
     display: block;
-    cursor: url("https://assets.codepen.io/174183/spiral_1.png"), auto;
+    cursor: default;
     font-family: "WHOA Top Minimum";
     font-variation-settings: "hrzn"0, "vert"0, "rota"0, "zoom"0;
     font-weight: normal;
@@ -107,7 +74,7 @@
     margin: 0 0 0 1rem;
     padding-top: .25em;
     text-decoration: underline;
-    text-decoration-color: #DB5ABA;
+    text-decoration-color: white;
     text-decoration-thickness: 4px;
     text-underline-offset: 3px;
 }
@@ -151,9 +118,11 @@
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 10px;
-    width: 280px;
+    max-width: 280px;
+    min-height: 30vh;
     max-height: 70vh;
     overflow-y: auto;
+    min-width: 220px;
 }
 
 .job-card {
@@ -169,4 +138,47 @@
 .job-card:hover {
     box-shadow: 10px 10px 20px black;
     transition: box-shadow 0.5s ease-in-out;
+}
+
+.add-new-job-btn {
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    margin: auto;
+    outline: none;
+    padding: 13px 23px;
+    text-decoration: none;
+    touch-action: manipulation;
+    transition: box-shadow .2s, -ms-transform .1s, -webkit-transform .1s, transform .1s;
+    user-select: none;
+    -webkit-user-select: none;
+    width: auto;
+    margin-bottom: 1em;
+    margin-top: 2em;
+}
+
+.add-new-job-btn:focus-visible {
+    box-shadow: #222222 0 0 0 2px, rgba(255, 255, 255, 0.8) 0 0 0 4px;
+    transition: box-shadow .2s;
+}
+
+.add-new-job-btn:active {
+    background-color: #F7F7F7;
+    border-color: #000000;
+    color: black;
+    transform: scale(.96);
+}
+
+.add-new-job-btn:disabled {
+    border-color: #DDDDDD;
+    color: #DDDDDD;
+    cursor: not-allowed;
+    opacity: 1;
 }

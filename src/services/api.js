@@ -29,3 +29,15 @@ export const updateJobApplicationStatus = (jobAppData, jobId) => {
         headers: { 'Content-Type': 'application/json' },
     });
 };
+
+export const addNewJobApplication = (jobAppData) => {
+    return axios.post(`${API_URL}/jobs`, jobAppData, {
+        headers: { 'Content-Type': 'application/json' },
+    });
+};
+
+export const deleteJobApplication = (jobId) => {
+    return axios.delete(`${API_URL}/jobs/${jobId}`, {
+        headers: { 'Content-Type': 'application/json' },
+    });
+};
