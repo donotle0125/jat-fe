@@ -26,7 +26,9 @@ const AcceptTerms = ({ isChecked, onCheckboxChange }) => {
                 />
                 <label htmlFor='acceptTerms'>
                     I accept all{' '}
-                    <a onClick={handleOpenModal}>terms & conditions</a>
+                    <a href='#' onClick={handleOpenModal}>
+                        terms & conditions
+                    </a>
                 </label>
             </div>
 
