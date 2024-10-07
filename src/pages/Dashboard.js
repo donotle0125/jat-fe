@@ -36,7 +36,7 @@ const Dashboard = ({ userData }) => {
     const [columns, setColumns] = useState(initialColumns);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [jobApps, setJobApps] = useState([]);
+    const [, setJobApps] = useState([]);
     const [showModal, setShowModal] = useState(false);
 
     const handleOpenModal = () => setShowModal(true);
