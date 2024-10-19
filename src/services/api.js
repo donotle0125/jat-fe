@@ -41,3 +41,11 @@ export const deleteJobApplication = (jobId) => {
         headers: { 'Content-Type': 'application/json' },
     });
 };
+
+export const uploadResume = (formData) => {
+    return axios.post(`${API_URL}/resume-upload`, formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        },
+    });
+};

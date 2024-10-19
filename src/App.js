@@ -4,6 +4,7 @@ import { Home } from './pages/Home';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Register from './pages/Register';
+import Resumes from './pages/Resumes';
 import { NavigationBar } from './components/NavigationBar';
 import ProtectedRoute from './components/ProtectedRoute';
 import UnauthenticatedRoute from './components/UnauthenticatedRoute';
@@ -68,6 +69,14 @@ function App() {
                     element={
                         <ProtectedRoute isAuthenticated={isAuthenticated}>
                             <Dashboard userData={userData} />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path='/user/resumes'
+                    element={
+                        <ProtectedRoute isAuthenticated={isAuthenticated}>
+                            <Resumes />
                         </ProtectedRoute>
                     }
                 />
